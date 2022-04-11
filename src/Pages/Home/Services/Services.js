@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from 'react';
+import Service from '../Service/Service';
 
 const Services = () => {
-   const [service, setService]=useState([])
+   const [services, setServices]=useState([])
 
    useEffect(()=>{
       fetch('services.json')
       .then(res=>res.json())
-      .then(data=>setService(data))
+      .then(data=>setServices(data))
    },[])
 
     return (
         <div>
-            <h2>servises : {service.length}</h2>
+            <h2>servises : {services.length}</h2>
+            {services.map(service=><Service key={service.id} service={service}></Service>)}
         </div>
     );
 };
