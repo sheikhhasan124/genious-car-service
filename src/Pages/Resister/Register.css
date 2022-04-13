@@ -1,0 +1,12 @@
+.register-container input{
+    display: block;
+    width: 100%;
+    padding-left: 10px;
+    font-size: 20px;
+    margin-bottom: 10px;
+   
+}
+.register-container{
+    width: 50%;
+    margin: 20px auto;
+}
