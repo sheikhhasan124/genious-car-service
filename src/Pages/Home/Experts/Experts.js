@@ -1,11 +1,11 @@
 import React from 'react';
-
-import expert1 from '../../../imges/expert1.jpg'
-import expert2 from '../../../imges/expert2.jpg'
-import expert3 from '../../../imges/expert3.jpg'
-import expert4 from '../../../imges/expert4.jpg'
-import expert5 from '../../../imges/expert5.jpg'
 import Expert from '../Expert/Expert';
+
+import expert1 from '../../../imges/experts/expert-1.jpg'
+import expert2 from '../../../imges/experts/expert-2.jpg'
+import expert3 from '../../../imges/experts/expert-3.jpg'
+import expert4 from '../../../imges/experts/expert-4.jpg'
+import expert5 from '../../../imges/experts/expert-5.jpg'
 
 const experts = [
     {id:1, name:"anabil", img: expert1},
@@ -20,7 +20,7 @@ const Experts = () => {
     return (
         <div>
             <h2>experts</h2>
-          <div className="row">
+          <div className="row ">
           {experts.map(expert=><Expert key={expert.id} expert={expert}></Expert>)}
           </div>
 
