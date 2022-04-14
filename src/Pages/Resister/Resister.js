@@ -34,12 +34,12 @@ const Resister = () => {
     }
     return (
         <div className='register-container'>
-            <h2>Resister</h2>
+            <h2 className='text-center'>Resister</h2>
             <form onSubmit={handleFormSubmit}>
                 <input  type="text" name="name" id="" placeholder='Name' required/>
                 <input  type="email" name="email" id="" placeholder='Email' required/>
                 <input  type="password" name="password" id=""  placeholder='Password' required />
-                <input type="submit" value="Submit" />
+                <input className='btn btn-primary w-50 mx-auto' type="submit" value="Register" />
             </form>
             <p>Have already account? <Link to="/login"><span className="text-danger">Please LogIn</span></Link></p>
             <SocialLogin></SocialLogin>

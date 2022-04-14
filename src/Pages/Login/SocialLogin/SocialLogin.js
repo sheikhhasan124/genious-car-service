@@ -9,9 +9,12 @@ import { Navigate, useNavigate } from "react-router-dom";
 const SocialLogin = () => {
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
   const [signInWithGithub, user1, loading1, error1] = useSignInWithGithub(auth);
-
-
   const navigate = useNavigate()
+
+  let errorElement;
+  if(error){
+    errorElement = <p className="text-danger">Error:{error.message}</p>
+  }
   if(user){
     navigate(`/home`)
   }
@@ -22,6 +25,7 @@ const SocialLogin = () => {
         <p className="mt-2 px-2">or</p>
         <div style={{ height: "1px" }} className="bg-primary w-50 "></div>
       </div>
+      <p>{errorElement}</p>
       <div>
         <button onClick={()=>signInWithGoogle()} className="btn btn-primary  w-50 d-block mx-auto mb-2">
             <img src={google} alt="" />

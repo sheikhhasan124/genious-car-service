@@ -51,8 +51,8 @@ const Login = () => {
         <Form.Group className="mb-3" controlId="formBasicCheckbox">
           <Form.Check type="checkbox" label="Check me out" />
         </Form.Group>
-        <Button variant="primary" type="submit">
-          Submit
+        <Button className="w-50 d-block mx-auto" variant="primary" type="submit">
+          Login
         </Button>
       </Form>
       {/* <p>Haven't you register? <Link to="/register"><span className="text-danger">Please register</span></Link></p> */}
