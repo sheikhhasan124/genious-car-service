@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
+import SocialLogin from '../Login/SocialLogin/SocialLogin';
 import './Register.css'
 
 const Resister = () => {
@@ -41,6 +42,7 @@ const Resister = () => {
                 <input type="submit" value="Submit" />
             </form>
             <p>Have already account? <Link to="/login"><span className="text-danger">Please LogIn</span></Link></p>
+            <SocialLogin></SocialLogin>
         </div>
     );
 };

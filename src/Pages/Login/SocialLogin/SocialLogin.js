@@ -1,5 +1,5 @@
 import React from "react";
-import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useSignInWithGithub, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import google from '../../../imges/social-icon/google.png'
 import facebook from '../../../imges/social-icon/facebook.png'
 import github from '../../../imges/social-icon/git hub.png'
@@ -8,6 +8,7 @@ import { Navigate, useNavigate } from "react-router-dom";
 
 const SocialLogin = () => {
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+  const [signInWithGithub, user1, loading1, error1] = useSignInWithGithub(auth);
 
 
   const navigate = useNavigate()
@@ -30,7 +31,7 @@ const SocialLogin = () => {
             <img src={facebook} alt="" />
              <span> Facebook sign in</span>
         </button>
-        <button className="btn btn-primary  w-50 d-block mx-auto">
+        <button onClick={()=>signInWithGithub()} className="btn btn-primary  w-50 d-block mx-auto">
             <img src={github} alt="" />
              <span> GitHub sign in</span>
         </button>
