@@ -1,5 +1,6 @@
+import { async } from '@firebase/util';
 import React, { useState } from 'react';
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import SocialLogin from '../Login/SocialLogin/SocialLogin';
@@ -12,7 +13,8 @@ const Resister = () => {
         user,
         loading,
         error,
-      ] = useCreateUserWithEmailAndPassword(auth);
+      ] = useCreateUserWithEmailAndPassword(auth ,{sendEmailVerification:true});
+      const [updateProfile, updating, updateError] = useUpdateProfile(auth);
     // const [user, setUser]=useState({name:'', email:'', password:''})
     // const {name,email, password}=user;
 
@@ -20,18 +22,24 @@ const Resister = () => {
     //     setUser({...user, [event.target.name]: event.target.value})
     // }
     const navigate = useNavigate()
-    if(user){
-        navigate(`/home`)
-    }
+  
+       
+     if(user){
+   console.log(user)
 
-    const handleFormSubmit= event=>{
+     }   
+
+    const handleFormSubmit= async(event)=>{
+        event.preventDefault()
         const name = event.target.name.value;
         const email = event.target.email.value;
         const password = event.target.password.value;
         // console.log(name, email, password)
-        createUserWithEmailAndPassword(email, password)
+       await createUserWithEmailAndPassword(email, password)
+       await updateProfile({ displayName:name});
+       navigate(`/home`)
+    //    alert('Updated profile');
         // console.log(user)
-        event.preventDefault()
     }
     return (
         <div className='register-container'>
