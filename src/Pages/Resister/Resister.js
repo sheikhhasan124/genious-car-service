@@ -6,6 +6,7 @@ import SocialLogin from '../Login/SocialLogin/SocialLogin';
 import './Register.css'
 
 const Resister = () => {
+    const [agree, setAgree]=useState(false)
     const [
         createUserWithEmailAndPassword,
         user,
@@ -39,7 +40,13 @@ const Resister = () => {
                 <input  type="text" name="name" id="" placeholder='Name' required/>
                 <input  type="email" name="email" id="" placeholder='Email' required/>
                 <input  type="password" name="password" id=""  placeholder='Password' required />
-                <input className='btn btn-primary w-50 mx-auto' type="submit" value="Register" />
+                <input onClick={()=>setAgree(!agree)} type="checkbox" name="terms" id="terms" />
+                <label  className={`ps-2 ${agree? '': 'text-danger'}`} htmlFor="terms">Accept service terms and conditions</label>
+        
+                <input disabled={!agree} className='btn btn-primary w-50 mx-auto' type="submit" value="Register" />
+                    
+            
+               
             </form>
             <p>Have already account? <Link to="/login"><span className="text-danger">Please LogIn</span></Link></p>
             <SocialLogin></SocialLogin>

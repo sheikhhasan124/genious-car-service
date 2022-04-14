@@ -4,7 +4,7 @@ import google from '../../../imges/social-icon/google.png'
 import facebook from '../../../imges/social-icon/facebook.png'
 import github from '../../../imges/social-icon/git hub.png'
 import auth from "../../../firebase.init";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const SocialLogin = () => {
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
@@ -12,10 +12,10 @@ const SocialLogin = () => {
   const navigate = useNavigate()
 
   let errorElement;
-  if(error){
-    errorElement = <p className="text-danger">Error:{error.message}</p>
+  if(error || error1){
+    errorElement = <p className="text-danger">Error:{error?.message} {error1.message}</p>
   }
-  if(user){
+  if(user || user1){
     navigate(`/home`)
   }
   return (

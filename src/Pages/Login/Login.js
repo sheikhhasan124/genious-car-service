@@ -1,9 +1,10 @@
 import React, { useRef } from "react";
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Button, Form } from "react-bootstrap";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
 import SocialLogin from "./SocialLogin/SocialLogin";
+import { async } from "@firebase/util";
 
 const Login = () => {
      const emailRef= useRef('')
@@ -17,6 +18,10 @@ const Login = () => {
       error,
     ] = useSignInWithEmailAndPassword(auth);
 
+    let errorElement;
+    if(error){
+      errorElement = <p className="text-danger">Error:{error?.message}</p>
+    }
      const handleSubmit=(event)=>{
          event.preventDefault();
          const email = emailRef.current.value;
@@ -32,6 +37,11 @@ const Login = () => {
         }
         const navigateRegister =()=>{
             navigate(`/register`)
+        }
+        const [sendPasswordResetEmail, sending, error1] = useSendPasswordResetEmail(auth);
+        const resetPassword =async()=>{
+          const email = emailRef.current.value;
+          await sendPasswordResetEmail(email)
         }
      
   return (
@@ -55,8 +65,10 @@ const Login = () => {
           Login
         </Button>
       </Form>
+      <p>{errorElement}</p>
       {/* <p>Haven't you register? <Link to="/register"><span className="text-danger">Please register</span></Link></p> */}
       <p>Haven't you register? <span onClick={navigateRegister} className="text-danger">Please register</span></p>
+      <p>Forget password? <span onClick={resetPassword} className="text-danger">Reset Password</span></p>
       <SocialLogin></SocialLogin>
     </div>
   );
