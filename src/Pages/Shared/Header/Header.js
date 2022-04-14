@@ -32,7 +32,7 @@ const Header = () => {
             <Nav.Link as={Link} to="/about">About</Nav.Link>
             
            {
-             user? <button onClick={handleSignout}>sign out</button>
+             user? <Nav.Link  onClick={handleSignout}>sign out</Nav.Link>
              :
 
               <Nav.Link as={Link} eventKey={2} to="/login">
