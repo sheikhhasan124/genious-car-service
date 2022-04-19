@@ -11,6 +11,7 @@ import Login from './Pages/Login/Login';
 import Resister from './Pages/Resister/Resister';
 import CheckOut from './Pages/CheckOut/CheckOut';
 import RequireAuth from './Pages/Login/RequireAuth/RequireAuth';
+import Testing from './Pages/testing/Testing';
 
 const App = () => {
     return (
@@ -19,6 +20,7 @@ const App = () => {
             <Routes>
                 <Route path="/" element={<Home></Home>}></Route>
                 <Route path="/home" element={<Home></Home>}></Route>
+                <Route path="/test" element={<Testing></Testing>}></Route>
                 <Route path="/service/:serviceId" element={<ServiceDetail></ServiceDetail>}></Route>
                 <Route path="/about" element={<About></About>}></Route>
                 <Route path="/login" element={<Login></Login>}></Route>
